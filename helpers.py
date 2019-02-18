@@ -56,3 +56,25 @@ def get_url():
     if size == 2:
         return sys.argv[1]
     raise Exception('Bad input parameters: need only url')
+
+
+def get_max_length(data):
+    """
+    calculate max length row
+    :param data: dict
+    :return: int
+    """
+    max_string = max(data.items(), key=lambda x: len('{}{}'.format(str(x[0]),str(x[1]))))
+    return len('{}{}'.format(max_string[0], max_string[1]))
+
+
+def get_formatted_string(data, max_length):
+    """
+    get formatted input string
+    :param data: tuple
+    :param max_length: int
+    :return: str
+    """
+    size = len('{}{}'.format(data[0], data[1]))
+    spaces = max_length-size
+    return '{} {} {}'.format(data[0], ' '*spaces, data[1])

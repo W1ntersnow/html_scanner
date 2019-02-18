@@ -53,8 +53,9 @@ class HtmlContentScanner:
         print title and words counts
         """
         print(self.title, end='\n\n')
+        max_length = helpers.get_max_length(self.results)
         for value in helpers.sort_dict(self.results):
-            print(value[0], value[1])
+            print(helpers.get_formatted_string(value, max_length))
 
 
 if __name__ == '__main__':
